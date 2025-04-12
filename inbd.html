@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Brahui to Urdu dictionary with thousands of words and phrases. Search Brahui words with Urdu meanings instantly.">
+    <meta name="keywords" content="Brahui dictionary, Brahui to Urdu, Brahui language, Balochi languages, Brahui translation">
+    <meta name="author" content="BrahuiLanguage">
+    <meta property="og:title" content="Brahui-Urdu Dictionary | Free Online Translation">
+    <meta property="og:description" content="Search Brahui words with Urdu meanings">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://brahui-urdu-dictionary.com">
+    <meta name="robots" content="index, follow">
+    <title>Brahui to Urdu Dictionary | Free Online Translation</title>
+    <link rel="canonical" href="https://brahui-urdu-dictionary.com">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #2c786c;
+            --secondary: #ff9a3c;
+            --accent: #004445;
+            --light: #faf5e4;
+            --dark: #1e1e1e;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nastaliq', 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        @font-face {
+            font-family: 'Nastaliq';
+            src: url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            outline: none;
+            transition: border 0.3s;
+            text-align: right;
+        }
+
+        #search-input:focus {
+            border-color: var(--primary);
+        }
+
+        #search-btn {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #search-btn:hover {
+            background: var(--accent);
+        }
+
+        .ad-container {
+            background-color: white;
+            padding: 1rem;
+            margin: 2rem auto;
+            text-align: center;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .dictionary-results {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: none;
+            text-align: right;
+        }
+
+        .word-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .word-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .translation {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .similar-words {
+            margin-top: 2rem;
+        }
+
+        .similar-words h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .words-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .word-chip {
+            background-color: #e9ecef;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .word-chip:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #d32f2f;
+            margin: 2rem 0;
+            display: none;
+            font-size: 1.1rem;
+        }
+
+        .spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            margin: 2rem auto;
+            border: 5px solid rgba(44, 120, 108, 0.2);
+            border-radius: 50%;
+            border-top: 5px solid var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            background-color: var(--accent);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            #search-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">براہوی <span>ڈکشنری</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">ہوم</a></li>
+                    <li><a href="#">الفاظ</a></li>
+                    <li><a href="#">مزید</a></li>
+                    <li><a href="#">رابطہ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>براہوی سے اردو ڈکشنری</h1>
+            <p>براہوی زبان کے الفاظ کا اردو میں ترجمہ تلاش کریں</p>
+        </section>
+
+        <div class="ad-container">
+            <!-- AdSense Top Banner Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="براہوی لفظ تلاش کریں...">
+            <button id="search-btn">تلاش</button>
+        </div>
+
+        <div class="spinner" id="spinner"></div>
+        <div class="error-message" id="error-message">لفظ نہیں ملا۔ براہ مہربانی دوسرا لفظ تلاش کریں۔</div>
+
+        <div class="dictionary-results" id="dictionary-results">
+            <div class="word-header">
+                <h2 id="word-title">لفظ</h2>
+                <div class="translation" id="translation">ترجمہ</div>
+            </div>
+
+            <div class="similar-words">
+                <h3>ملتے جلتے الفاظ</h3>
+                <div class="words-list" id="similar-words-list">
+                    <!-- Similar words will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <!-- AdSense Bottom Rectangle Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section class="dictionary-results" style="margin-top: 3rem;">
+            <h2>براہوی زبان کے بارے میں</h2>
+            <p>براہوی دراوڑی زبانوں کی شاخ سے تعلق رکھنے والی ایک زبان ہے جو پاکستان، افغانستان اور ایران کے بعض علاقوں میں بولی جاتی ہے۔ یہ بلوچستان میں خاص طور پر رائج ہے۔</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>براہوی ڈکشنری</h3>
+                    <p>براہوی زبان کے الفاظ کا اردو میں ترجمہ تلاش کرنے کا بہترین ذریعہ</p>
+                </div>
+                <div class="footer-section">
+                    <h3>تیز لنکس</h3>
+                    <ul>
+                        <li><a href="#">عام استعمال کے الفاظ</a></li>
+                        <li><a href="#">براہوی گرامر</a></li>
+                        <li><a href="#">زبان سیکھیں</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>رابطہ</h3>
+                    <ul>
+                        <li><a href="#">ہمارے بارے میں</a></li>
+                        <li><a href="#">مدد</a></li>
+                        <li><a href="#">رابطہ کریں</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> براہوی اردو ڈکشنری۔ تمام حقوق محفوظ ہیں۔</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample Brahui-Urdu dictionary data (word and translation only)
+        const brahuiDictionary = [
+            { word: "اڑ", translation: "آگ" },
+            { word: "بند", translation: "پانی" },
+            { word: "دست", translation: "ہاتھ" },
+            { word: "پاڑ", translation: "پہاڑ" },
+            { word: "ہال", translation: "گھر" },
+            { word: "زار", translation: "زمین" },
+            { word: "ناڑ", translation: "نار" },
+            { word: "کوت", translation: "کتاب" },
+            { word: "ماڑ", translation: "ماں" },
+            { word: "پتر", translation: "بیٹا" }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // DOM elements
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const dictionaryResults = document.getElementById('dictionary-results');
+            const wordTitle = document.getElementById('word-title');
+            const translation = document.getElementById('translation');
+            const similarWordsList = document.getElementById('similar-words-list');
+            const spinner = document.getElementById('spinner');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Event listeners
+            searchBtn.addEventListener('click', searchWord);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchWord();
+                }
+            });
+            
+            // Search function
+            function searchWord() {
+                const word = searchInput.value.trim();
+                
+                if (!word) {
+                    showError('براہ مہربانی ایک لفظ درج کریں');
+                    return;
+                }
+                
+                // Show loading state
+                spinner.style.display = 'block';
+                dictionaryResults.style.display = 'none';
+                errorMessage.style.display = 'none';
+                
+                // Simulate API call with timeout
+                setTimeout(() => {
+                    const foundWord = brahuiDictionary.find(item => 
+                        item.word === word
+                    );
+                    
+                    if (foundWord) {
+                        displayWordData(foundWord);
+                    } else {
+                        showError('لفظ نہیں ملا۔ براہ مہربانی دوسرا لفظ تلاش کریں۔');
+                    }
+                    
+                    spinner.style.display = 'none';
+                }, 500);
+            }
+            
+            // Display word data
+            function displayWordData(wordData) {
+                wordTitle.textContent = wordData.word;
+                translation.textContent = wordData.translation;
+                
+                // Display similar words (first 5 words from dictionary)
+                similarWordsList.innerHTML = '';
+                const similarWords = brahuiDictionary
+                    .filter(item => item.word !== wordData.word)
+                    .slice(0, 5);
+                
+                similarWords.forEach(word => {
+                    const wordEl = document.createElement('div');
+                    wordEl.className = 'word-chip';
+                    wordEl.textContent = word.word;
+                    wordEl.addEventListener('click', () => {
+                        searchInput.value = word.word;
+                        searchWord();
+                    });
+                    similarWordsList.appendChild(wordEl);
+                });
+                
+                // Show results
+                dictionaryResults.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // Scroll to results
+                dictionaryResults.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Show error message
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                dictionaryResults.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
